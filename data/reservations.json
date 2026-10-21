@@ -1,0 +1,27 @@
+[
+  {
+    "id": "res_1792585389906_808",
+    "name": "Zainab Tariq",
+    "phone": "+92 333 9988776",
+    "date": "2026-10-26",
+    "time": "Sunset Hours 6:00 PM",
+    "seating": "Skyline Edge",
+    "guests": 3,
+    "preorder": "Wood-Fired Prime Cut Ribeye (x2), Royal Tandoori Salmon (x1)",
+    "notes": "Window table please",
+    "status": "Pending",
+    "createdAt": "2026-10-21T12:23:09.906Z"
+  },
+  {
+    "id": "res_1792583582768_280",
+    "name": "Ahmed Khan",
+    "phone": "+92 321 4455667",
+    "date": "2026-10-25",
+    "time": "Sunset Hours 6:00 PM",
+    "seating": "Skyline Edge",
+    "guests": 2,
+    "notes": "Anniversary celebration for 2",
+    "status": "Pending",
+    "createdAt": "2026-10-21T11:53:02.768Z"
+  }
+]

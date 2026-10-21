@@ -1,0 +1,191 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOCO Admin</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@800&family=Jost:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1B3326;--gold:#B89C6E;--line:#e4e4d4}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:#FFFFEC;color:#333;font:14px "Plus Jakarta Sans",system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.top{height:64px;display:flex;align-items:center;gap:14px;padding:0 24px;background:#fff;border-bottom:1px solid var(--line)}
+.wm{display:flex;flex-direction:column;align-items:center;line-height:1}
+.wm b{font:800 26px "Playfair Display",Georgia,serif;color:var(--g)}
+.wm i{font:500 7px Jost,sans-serif;font-style:normal;color:var(--gold);letter-spacing:.62em;margin:4px -.62em 0 0}
+.tag{padding:5px 12px;border-radius:99px;border:1px solid var(--line);font-size:12px;color:#667}
+.sp{flex:1}#dirty{font-size:12px;color:#8a6d3b}
+.btn{padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:#fff;color:var(--g);text-decoration:none;font-size:13px;font-weight:700}
+.btn.dark{background:var(--g);border-color:var(--g);color:#fff}.btn:disabled{opacity:.6}
+.shell{display:flex;height:calc(100vh - 64px)}
+#side{width:220px;flex:none;padding:18px 14px;background:#fff;border-right:1px solid var(--line)}
+#nav{display:flex;flex-direction:column;gap:4px}
+#nav button{text-align:left;padding:11px 14px;border-radius:12px;font-weight:600;color:#445}
+#nav button:hover{background:#f4f4ee}#nav button.on{background:var(--g);color:#fff}
+main{flex:1;overflow:auto;padding:28px 32px 60px}
+main h1{font:800 24px "Plus Jakarta Sans",sans-serif;color:var(--g);margin-bottom:18px}
+#pane{max-width:1100px}
+#pane.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;align-items:start}
+#pane.grid .pri,#pane.grid .note{grid-column:1/-1}
+#pane.text{max-width:760px}
+.af{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;font-size:12px;font-weight:600;color:#445}
+input,textarea{width:100%;background:#f4f4ee;border:1px solid #dcdccb;border-radius:10px;padding:10px 12px;color:#111;font:inherit;font-size:14px;font-weight:400}
+input:focus,textarea:focus{outline:2px solid var(--g);outline-offset:1px;background:#fff}
+input[type=color]{height:42px;padding:3px}
+.box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 4px 16px rgba(27,51,38,.05)}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.row input{flex:1;min-width:90px;width:auto}
+.row button,.ab{padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:#fff;color:var(--g);font-size:12px;font-weight:700;cursor:pointer}
+.ai img{width:100%;height:120px;object-fit:cover;border-radius:12px;margin-bottom:8px}
+.pri{background:var(--g);color:#fff;font-weight:700;border-radius:99px;padding:12px 20px;width:100%}
+.note{font-size:13px;line-height:1.6;margin:0 0 14px;color:#778}
+iframe{position:fixed;left:-9999px;top:0;width:1280px;height:900px;border:0;visibility:hidden}
+@media(max-width:800px){.shell{flex-direction:column;height:auto}#side{width:auto;padding:10px}#nav{flex-direction:row;flex-wrap:wrap}.top{flex-wrap:wrap;height:auto;padding:12px}}
+</style></head><body>
+<header class="top"><div class="wm"><b>VOCO</b><i>ROOFTOP</i></div><span class="tag">Admin Panel</span><div class="sp"></div><span id="dirty"></span>
+<a class="btn" href="/" target="_blank" rel="noopener">View website ↗</a><a class="btn" href="/menu" target="_blank" rel="noopener" style="margin-left:6px">View menu ↗</a><button id="save" class="btn dark">Save changes</button><button id="out" class="btn">Sign out</button></header>
+<div class="shell"><aside id="side"><nav id="nav"></nav></aside><main><h1 id="ttl"></h1><div id="pane"></div></main></div>
+<iframe id="f" src="/admin/preview" title="data" aria-hidden="true" tabindex="-1"></iframe>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const f=$('f');let W,Z,D,M,Cc,L,tab='reservations',q='',dirty=false;
+let ReservationsList=[],OrdersList=[],loadingData=false;
+const ev=s=>W.eval(s);
+const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const att=s=>esc(s).replace(/"/g,'&quot;');
+const toHtml=s=>esc(s).replace(/\n/g,'<br>');
+const toText=h=>(h||'').replace(/<br\s*\/?>/g,'\n').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+const mark=()=>{dirty=true;$('dirty').textContent='Unsaved changes'};
+const tabs=[['reservations','Table Requests'],['orders','Delivery Orders'],['t','Text'],['dishes','Dishes'],['menu','Menu'],['zones','Zones'],['info','Contact'],['th','Look']];
+const inp=(p,v,l,x='')=>`<label class="af">${l}<input data-p="${p}" ${x} value="${att(v??'')}"></label>`;
+const photo=(p,v)=>`<div class="af ai">${v?`<img src="${att(v)}" alt="">`:''}<label class="ab">${v?'Replace':'Upload'} photo<input type="file" accept="image/*" data-img="${p}" hidden></label></div>`;
+
+async function loadReservations(){
+  loadingData=true;
+  try{const r=await fetch('/api/reservations');ReservationsList=await r.json();}catch(e){}
+  loadingData=false;render();
+}
+
+async function loadOrders(){
+  loadingData=true;
+  try{const r=await fetch('/api/orders');OrdersList=await r.json();}catch(e){}
+  loadingData=false;render();
+}
+
+function view(){
+ if(tab==='reservations'){
+   if(loadingData)return '<p class="note">Loading table requests…</p>';
+   return `<div class="row" style="margin-bottom:16px"><button class="ab" data-act="rref">🔄 Refresh list</button><span class="note" style="margin:0">Total table requests: ${ReservationsList.length}</span></div>`+
+     (ReservationsList.length===0?'<div class="box"><p class="note" style="margin:0">No table requests received yet. When visitors request a table on the website, they will appear here instantly.</p></div>':
+     ReservationsList.map(r=>`
+       <div class="box" style="margin-bottom:14px;border-left:4px solid ${r.status==='Confirmed'?'#2e7d32':'#e65100'}">
+         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+           <b style="font-size:16px;color:var(--g)">${esc(r.name)}</b>
+           <span style="display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;background:${r.status==='Confirmed'?'#e8f5e9':'#fff3e0'};color:${r.status==='Confirmed'?'#2e7d32':'#e65100'}">${esc(r.status||'Pending')}</span>
+         </div>
+         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;font-size:13px;margin-bottom:10px;color:#445">
+           <div><b>Phone:</b> <a href="tel:${esc(r.phone)}" style="color:var(--g);font-weight:700">${esc(r.phone)}</a></div>
+           <div><b>Date:</b> ${esc(r.date||'—')}</div>
+           <div><b>Time:</b> ${esc(r.time||'—')}</div>
+           <div><b>Guests:</b> ${esc(r.guests||2)} Guests</div>
+           <div><b>Zone:</b> ${esc(r.seating||'Skyline Edge')}</div>
+           <div><b>Received:</b> ${new Date(r.createdAt).toLocaleString()}</div>
+         </div>
+         ${r.preorder?`<div style="background:#edf7ed;border:1px solid #c8e6c9;padding:8px 12px;border-radius:8px;font-size:13px;margin-bottom:10px;color:#1b5e20"><b>🍽 Pre-ordered Meal:</b> ${esc(r.preorder)}</div>`:''}
+         ${r.notes?`<div style="background:#f4f4ee;padding:8px 12px;border-radius:8px;font-size:13px;margin-bottom:10px"><b>Notes / Occasion:</b> ${esc(r.notes)}</div>`:''}
+         <div class="row">
+           <button class="ab" data-act="rtog" data-id="${att(r.id)}" data-st="${r.status==='Confirmed'?'Pending':'Confirmed'}">${r.status==='Confirmed'?'Mark as Pending':'✓ Mark as Confirmed'}</button>
+           <button class="ab" style="color:#c62828" data-act="rdel" data-id="${att(r.id)}">Delete</button>
+         </div>
+       </div>
+     `).join(''));
+ }
+ if(tab==='orders'){
+   if(loadingData)return '<p class="note">Loading delivery orders…</p>';
+   return `<div class="row" style="margin-bottom:16px"><button class="ab" data-act="oref">🔄 Refresh list</button><span class="note" style="margin:0">Total orders: ${OrdersList.length}</span></div>`+
+     (OrdersList.length===0?'<div class="box"><p class="note" style="margin:0">No home delivery orders received yet. Orders placed on the /menu page will appear here.</p></div>':
+     OrdersList.map(o=>`
+       <div class="box" style="margin-bottom:14px;border-left:4px solid #1B3326">
+         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+           <div><b style="font-size:16px;color:var(--g)">${esc(o.customerName)}</b> <span style="font-size:12px;color:#778">(${esc(o.id)})</span></div>
+           <span style="display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;background:#e0f2f1;color:#004d40">${esc(o.status||'Received')}</span>
+         </div>
+         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;font-size:13px;margin-bottom:10px;color:#445">
+           <div><b>Phone:</b> <a href="tel:${esc(o.phone)}" style="color:var(--g);font-weight:700">${esc(o.phone)}</a></div>
+           <div><b>Address:</b> ${esc(o.address)}</div>
+           <div><b>Total Amount:</b> <b style="color:var(--g);font-size:14px">PKR ${(o.total||0).toLocaleString('en-US')}</b></div>
+           <div><b>Placed:</b> ${new Date(o.createdAt).toLocaleString()}</div>
+         </div>
+         <div style="background:#f4f4ee;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:10px">
+           <b>Items Ordered:</b>
+           <ul style="margin:6px 0 0 18px">
+             ${(o.items||[]).map(it=>`<li>${esc(it.name)} × ${it.qty} (PKR ${(it.price*it.qty).toLocaleString('en-US')})</li>`).join('')}
+           </ul>
+           ${o.notes?`<div style="margin-top:6px"><b>Notes:</b> ${esc(o.notes)}</div>`:''}
+         </div>
+         <div class="row">
+           <button class="ab" data-act="ostatus" data-id="${att(o.id)}" data-st="Preparing">Set: Preparing</button>
+           <button class="ab" data-act="ostatus" data-id="${att(o.id)}" data-st="Out for Delivery">Set: Out for Delivery</button>
+           <button class="ab" data-act="ostatus" data-id="${att(o.id)}" data-st="Delivered">Set: Delivered</button>
+           <button class="ab" style="color:#c62828" data-act="odel" data-id="${att(o.id)}">Delete</button>
+         </div>
+       </div>
+     `).join(''));
+ }
+ if(tab==='t'){const rows=L.map((e,i)=>[i,toText(e.innerHTML)]).filter(r=>!q||r[1].toLowerCase().includes(q.toLowerCase()));
+  return `<div class="row"><input id="admq" placeholder="Search text…" value="${att(q)}"></div><p class="note">Edit any wording: headlines, buttons, section titles, footer.</p>`+rows.map(r=>`<label class="af">${esc(r[1].slice(0,30))}<textarea data-t="${r[0]}" rows="${r[1].length>60?3:1}">${esc(r[1])}</textarea></label>`).join('')}
+ if(tab==='dishes')return D.map((d,i)=>`<div class="box">${inp(`dishes.${i}.0`,d[0],'Name')}${inp(`dishes.${i}.1`,d[1],'Price (PKR)','data-n=1 type=number')}${inp(`dishes.${i}.2`,d[2],'Short description')}${inp(`dishes.${i}.3`,d[3],'Card colour','type=color')}${photo(`dishes.${i}.4`,d[4])}<div class="row"><button data-act="dmv" data-i="${i}" data-d="-1">↑</button><button data-act="dmv" data-i="${i}" data-d="1">↓</button><button data-act="ddel" data-i="${i}">Delete</button></div></div>`).join('')+'<button class="pri" data-act="dadd">+ Add dish</button>';
+ if(tab==='menu')return Object.keys(M).map(k=>`<div class="box"><div class="row"><input data-cat="${att(k)}" value="${att(k)}"><button data-act="cdel" data-k="${att(k)}">Delete category</button></div>${M[k].map((m,j)=>`<div class="row"><input data-m="${att(k)}|${j}|0" value="${att(m[0])}" placeholder="Name"><input data-m="${att(k)}|${j}|1" value="${att(m[1])}" placeholder="Description"><input data-m="${att(k)}|${j}|2" type="number" value="${m[2]}" style="max-width:80px"><button data-act="mdel" data-k="${att(k)}" data-j="${j}">✕</button></div>`).join('')}<button class="ab" data-act="madd" data-k="${att(k)}">+ Add item</button></div>`).join('')+'<button class="pri" data-act="cadd">+ Add category</button>';
+ if(tab==='zones')return Z.map((z,i)=>`<div class="box">${inp(`zones.${i}.tab`,z.tab,'Tab label')}${inp(`zones.${i}.name`,z.name,'Zone name')}${inp(`zones.${i}.cap`,z.cap,'Capacity badge')}<label class="af">Description<textarea data-p="zones.${i}.blurb" rows="3">${esc(z.blurb)}</textarea></label>${photo(`zones.${i}.img`,z.img)}<div class="row"><button data-act="zdel" data-i="${i}">Delete zone</button></div></div>`).join('')+'<button class="pri" data-act="zadd">+ Add zone</button>';
+ if(tab==='info')return[['address','Address'],['hours','Operating hours'],['phone','Phone']].map(([k,l])=>`<label class="af">${l}<textarea data-f="${k}" rows="${k==='phone'?1:3}">${esc(toText(W.document.querySelector(`[data-f=${k}]`).innerHTML))}</textarea></label>`).join('');
+ const cs=W.getComputedStyle(W.document.documentElement);
+ return[['gold','Accent colour'],['bg','Page background'],['sage','Body text colour']].map(([k,l])=>`<label class="af">${l}<input type="color" data-th="${k}" value="${(cs.getPropertyValue('--'+k).trim()||'#000000').slice(0,7)}"></label>`).join('')+'<p class="note">Colours apply across buttons, text and backgrounds. Press Save changes to keep them.</p>';
+}
+function render(){$('nav').innerHTML=tabs.map(([k,l])=>`<button data-k="${k}" class="${k===tab?'on':''}">${l}</button>`).join('');$('ttl').textContent=tabs.find(t=>t[0]===tab)[1];$('pane').className=['dishes','zones','menu'].includes(tab)?'grid':tab==='t'?'text':'';$('pane').innerHTML=view()}
+const sync=r=>{if(r==='dishes')ev('drawRib()');if(r==='zones')ev('buildTabs(0)');if(r==='menu')ev('if(!menu[cat])cat=Object.keys(menu)[0];if($("mdlg").open)drawMenu()')};
+const shrink=(file,w)=>new Promise((ok,no)=>{const im=new Image();im.onload=()=>{const s=Math.min(1,w/im.width),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.74))};im.onerror=no;im.src=URL.createObjectURL(file)});
+function ready(){W=f.contentWindow;Z=ev('zones');D=ev('dishes');M=ev('menu');Cc=ev('C');L=ev('LEAVES');
+ W.document.addEventListener('click',e=>{if(!W.document.body.classList.contains('picking'))return;const t=e.target.closest('[data-e]');e.preventDefault();e.stopPropagation();W.document.body.classList.remove('picking');if(t){tab='t';q=toText(t.innerHTML).slice(0,40)}render()},true);
+ loadReservations();
+}
+f.onload=ready;
+$('nav').onclick=e=>{const b=e.target.closest('[data-k]');if(b){tab=b.dataset.k;if(tab==='reservations')loadReservations();else if(tab==='orders')loadOrders();else render()}};
+const R=()=>({zones:Z,dishes:D,menu:M});
+$('pane').addEventListener('input',e=>{const x=e.target;
+ if(x.id==='admq'){q=x.value;const pos=x.selectionStart;render();const n=$('admq');n.focus();n.setSelectionRange(pos,pos);return}
+ mark();
+ if(x.dataset.t!=null){const h=toHtml(x.value);L[+x.dataset.t].innerHTML=h;Cc.t[x.dataset.t]=h}
+ else if(x.dataset.p){const k=x.dataset.p.split('.');let o=R()[k[0]];for(let a=1;a<k.length-1;a++)o=o[k[a]];o[k[k.length-1]]=x.dataset.n?Number(x.value)||0:x.value;sync(k[0])}
+ else if(x.dataset.m){const[c,j,fl]=x.dataset.m.split('|');M[c][j][fl]=fl==='2'?Number(x.value)||0:x.value;sync('menu')}
+ else if(x.dataset.f){Cc.info[x.dataset.f]=toHtml(x.value);ev('applyInfo()')}
+ else if(x.dataset.th){Cc.th[x.dataset.th]=x.value;ev('applyTheme()')}});
+$('pane').addEventListener('change',async e=>{const x=e.target;
+ if(x.dataset.cat){const o=x.dataset.cat,n=x.value.trim();if(n&&n!==o&&!M[n]){mark();const en=Object.entries(M);en.forEach(([k])=>delete M[k]);en.forEach(([k,v])=>{M[k===o?n:k]=v});if(ev('cat')===o)ev('cat='+JSON.stringify(n));sync('menu')}render()}
+ if(x.dataset.img){const file=x.files[0];if(!file)return;mark();const p=x.dataset.img.split('.');R()[p[0]][p[1]][p[2]]=await shrink(file,p[0]==='zones'?1100:800);sync(p[0]);render()}});
+$('pane').addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,i=+b.dataset.i,k=b.dataset.k,j=+b.dataset.j;
+ if(a==='rref'){loadReservations();return}
+ if(a==='rtog'){await fetch('/api/reservations',{method:'PATCH',headers:{'content-type':'application/json'},body:JSON.stringify({id:b.dataset.id,status:b.dataset.st})});loadReservations();return}
+ if(a==='rdel'){if(confirm('Delete this table reservation request?')){await fetch('/api/reservations?id='+encodeURIComponent(b.dataset.id),{method:'DELETE'});loadReservations();}return}
+ if(a==='oref'){loadOrders();return}
+ if(a==='ostatus'){await fetch('/api/orders',{method:'PATCH',headers:{'content-type':'application/json'},body:JSON.stringify({id:b.dataset.id,status:b.dataset.st})});loadOrders();return}
+ if(a==='odel'){if(confirm('Delete this order?')){await fetch('/api/orders?id='+encodeURIComponent(b.dataset.id),{method:'DELETE'});loadOrders();}return}
+ if(a==='pick'){W.document.body.classList.add('picking');return}
+ mark();
+ if(a==='dadd')D.push(['New dish',1000,'Short description','#4a3a2a','']);
+ else if(a==='ddel')D.splice(i,1);
+ else if(a==='dmv'){const d=+b.dataset.d;if(D[i+d])D.splice(i+d,0,D.splice(i,1)[0])}
+ else if(a==='zadd')Z.push({tab:'New zone',name:'New zone',cap:'2–4 Guests',blurb:'Describe this seating area.',bg:'radial-gradient(ellipse at 50% 20%,#4a6a58,#16261e 70%)',img:''});
+ else if(a==='zdel')Z.splice(i,1);
+ else if(a==='madd')M[k].push(['New item','Description',1000]);
+ else if(a==='mdel')M[k].splice(j,1);
+ else if(a==='cadd'){let n='New category',c=1;while(M[n])n='New category '+(++c);M[n]=[]}
+ else if(a==='cdel')delete M[k];
+ sync(tab==='dishes'?'dishes':tab==='zones'?'zones':'menu');render()});
+$('save').onclick=async()=>{const s=$('save');s.disabled=true;
+ try{const r=await fetch('/api/content',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(ev('({zones,dishes,menu,t:C.t,info:C.info,th:C.th})'))});
+  if(r.status===401){location.href='/admin-login';return}if(!r.ok)throw new Error(await r.text());dirty=false;$('dirty').textContent='All changes saved'}
+ catch(x){$('dirty').textContent='Save failed: '+x.message}s.disabled=false};
+$('out').onclick=async()=>{await fetch('/api/logout',{method:'POST'});location.href='/admin-login'};
+addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+})();
+</script></body></html>

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ORD-804408",
+    "customerName": "Fatima Ali",
+    "phone": "+92 300 1234567",
+    "address": "House 45, Street 12, Phase 5, DHA, Lahore",
+    "notes": "Please pack sauces separately",
+    "items": [
+      {
+        "name": "Wood-Fired Prime Cut Ribeye",
+        "qty": 1,
+        "price": 4850
+      },
+      {
+        "name": "Botanical Sunset Mocktail",
+        "qty": 2,
+        "price": 1250
+      }
+    ],
+    "total": 7350,
+    "status": "Received",
+    "createdAt": "2026-10-21T11:53:02.863Z"
+  }
+]

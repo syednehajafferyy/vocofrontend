@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Login | VOCO Rooftop</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:wght@800&family=Jost:wght@500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;display:grid;place-items:center;padding:24px;background:#FFFFEC;color:#111;font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+.card{width:100%;max-width:340px;padding:30px 32px 28px;border-radius:26px;background:#fff;border:1px solid #e4e4d4;box-shadow:0 8px 28px rgba(27,51,38,.08)}
+.wm{display:flex;flex-direction:column;align-items:center;line-height:1;margin-bottom:14px}
+.wm b{font:800 38px "Playfair Display",Georgia,serif;color:#1B3326}
+.wm i{font:500 8px Jost,sans-serif;font-style:normal;color:#B89C6E;letter-spacing:.7em;margin:5px -.7em 0 0}
+h1{text-align:center;font-size:20px;font-weight:800}
+.sub{text-align:center;margin:8px 0 24px;font-size:11px;color:#8b95a5}
+label{display:block;font-size:11px;font-weight:700;margin-bottom:7px}
+.f{position:relative;margin-bottom:18px}
+.f svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#9aa0a6;fill:none;stroke-width:1.8}
+input{width:100%;height:38px;padding:0 12px 0 36px;border:1px solid #dcdccb;border-radius:10px;background:#f4f4ee;font:inherit;font-size:12px;color:#111}
+input:focus{outline:2px solid #1B3326;outline-offset:1px;background:#fff}
+.go{width:100%;height:38px;margin-top:6px;border:0;border-radius:99px;background:#1B3326;color:#fff;font:700 12px inherit;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.go:hover{background:#244533}.go:disabled{opacity:.6}
+.err{min-height:18px;margin-top:12px;font-size:12px;color:#c0392b;text-align:center}
+.warn{margin-top:4px;font-size:11px;color:#8a6d3b;line-height:1.5;text-align:center}
+.back{display:block;margin-top:14px;text-align:center;font-size:11px;color:#8b95a5;text-decoration:none}.back:hover{color:#1B3326}
+</style></head><body>
+<main class="card">
+<div class="wm"><b>VOCO</b><i>ROOFTOP</i></div>
+<h1>Admin Panel</h1><p class="sub">Sign in to access your dashboard</p>
+<form id="f">
+<label for="e">Email Address</label>
+<div class="f"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="e" type="email" placeholder="admin@vocorooftop.com" autocomplete="username" required autofocus></div>
+<label for="p">Password</label>
+<div class="f"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="p" type="password" placeholder="••••••••" autocomplete="current-password" required></div>
+<button class="go" id="b">Sign In <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<p class="err" id="m" role="alert"></p></form>
+<p class="warn">{{WARN}}</p>
+<a class="back" href="/">← Back to website</a>
+</main>
+<script>
+const m=document.getElementById('m'),b=document.getElementById('b');
+document.getElementById('f').onsubmit=async ev=>{ev.preventDefault();b.disabled=true;m.textContent='';
+ try{const r=await fetch('/api/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:document.getElementById('e').value,password:document.getElementById('p').value})});
+  if(r.ok)location.href='/admin';else m.textContent=r.status===401?'Incorrect email or password.':(await r.text());}
+ catch(x){m.textContent='Could not reach the server.'}b.disabled=false};
+</script></body></html>

@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VOCO Rooftop | Gulberg II, Lahore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Syne:wght@600;700;800&family=Playfair+Display:wght@800&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A120E;--forest:#224338;--gold:#C1A278;--sage:#9EB0AA;--glass:rgba(34,67,56,.4);--line:rgba(193,162,120,.2);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*,*:before,*:after{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--sage);font-family:"Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,.d{font-family:Syne,"Plus Jakarta Sans",system-ui,sans-serif}
+button,select{font:inherit;color:inherit;cursor:pointer;border:0;background:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+a{text-decoration:none!important;color:inherit}
+a:hover,a:focus,a:visited,.go,.btn,.cta,.ghost{text-decoration:none!important}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.glass{background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.gold{background:var(--gold);color:var(--bg);font-weight:700}
+.gold:hover{filter:brightness(1.1)}
+/* header */
+.hdr{position:fixed;left:0;right:0;top:calc(16px + env(safe-area-inset-top,0px));z-index:50;padding:0 16px}
+.hdr-in{max-width:1152px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-radius:99px;padding:8px 12px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;letter-spacing:.2em;font-size:18px;text-decoration:none}
+.badge{width:36px;height:36px;border-radius:12px;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-weight:800;border:1px solid rgba(193,162,120,.3)}
+.nav{display:flex;gap:4px}
+.nav a{padding:8px 16px;border-radius:99px;font-size:14px;color:var(--sage);text-decoration:none;transition:.2s}
+.nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.cta{display:inline-block;padding:10px 20px;border-radius:99px;font-size:14px;text-decoration:none}
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:128px 16px 190px;overflow:hidden;
+background:
+radial-gradient(circle at 18% 62%,rgba(193,162,120,.35) 0 2px,transparent 3px),radial-gradient(circle at 27% 70%,rgba(193,162,120,.25) 0 2px,transparent 3px),radial-gradient(circle at 74% 58%,rgba(193,162,120,.3) 0 2px,transparent 3px),radial-gradient(circle at 83% 66%,rgba(193,162,120,.22) 0 2px,transparent 3px),
+radial-gradient(ellipse at 50% 75%,#3a5a4a 0,#16261e 45%,var(--bg) 85%)}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(58,90,74,.45) 0%,rgba(22,38,30,.2) 50%,transparent 80%);animation:rooftopBreeze 12s ease-in-out infinite alternate;pointer-events:none;z-index:1}
+@keyframes rooftopBreeze{0%{transform:scale(1) translateY(0);opacity:.7}100%{transform:scale(1.08) translateY(-15px);opacity:1}}
+.hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.sky rect[opacity]{animation:twinkle 4s ease-in-out infinite alternate}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:.95;filter:drop-shadow(0 0 3px #C1A278)}}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 20%,rgba(10,18,14,.95) 100%);pointer-events:none}
+.hero>*{position:relative;z-index:2}
+.pill{font-size:11px;letter-spacing:.25em;color:var(--gold);padding:9px 20px;border-radius:99px;margin-bottom:32px;font-weight:600}
+h1{font-size:clamp(2.4rem,7.5vw,6.5rem);line-height:.88;letter-spacing:-.03em;color:#fff;font-weight:800;transition:color .35s ease;display:inline-block;cursor:default}
+h1:hover{color:var(--gold)}
+.sub{margin-top:24px;font-size:16px;max-width:520px}
+.rise{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}.r2{animation-delay:.15s}.r3{animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* dock */
+.dock{position:absolute;z-index:5;left:16px;right:16px;bottom:calc(32px + env(safe-area-inset-bottom,0px));max-width:896px;margin:0 auto}
+.dock-in{display:flex;gap:12px;align-items:center;padding:12px;border-radius:99px}
+.cell{flex:1;display:flex;justify-content:space-between;align-items:center;gap:16px;background:rgba(10,18,14,.5);border-radius:99px;padding:12px 20px;font-size:14px}
+.ctr{display:flex;align-items:center;gap:16px}
+.ctr button{width:32px;height:32px;border-radius:50%;border:1px solid rgba(193,162,120,.4);color:var(--gold);transition:.2s}
+.ctr button:hover{background:var(--gold);color:var(--bg)}
+.ctr b{width:24px;text-align:center;font:800 20px Syne,sans-serif;color:#fff}
+select{background:transparent;color:#fff;font-weight:600;font-size:14px;cursor:pointer}
+.cell select{background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23C1A278' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;padding-right:22px;text-align:right}
+select option{background-color:#122119;color:#fff;padding:12px;font-size:14px}
+.go{padding:16px 32px;border-radius:99px;font-size:14px;white-space:nowrap;text-decoration:none!important}
+.msg{margin-top:12px;min-height:20px;text-align:center;font-size:14px;color:var(--gold)}
+/* sections */
+section{max-width:1152px;margin:0 auto;padding:80px 16px 0}
+h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1;color:#fff;font-weight:800;transition:color .35s ease;display:inline-block}
+h2:hover{color:var(--gold)}
+
+/* luxury custom cursor */
+.voco-cursor-dot{
+  position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);pointer-events:none!important;z-index:9999999;
+  transform:translate(-50%,-50%);box-shadow:0 0 0 1px rgba(0,0,0,.6), 0 0 10px rgba(193,162,120,.9);
+  opacity:0;transition:opacity .2s ease,transform .15s ease,background .2s ease;
+  will-change:left,top;
+}
+.voco-cursor-ring{
+  position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(193,162,120,.8);background:rgba(193,162,120,.05);
+  pointer-events:none!important;z-index:9999998;transform:translate(-50%,-50%);
+  opacity:0;transition:opacity .2s ease,width .22s cubic-bezier(.2,.8,.2,1),height .22s cubic-bezier(.2,.8,.2,1),border-color .2s ease,background .2s ease,transform .15s ease;
+  will-change:left,top;
+}
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor select,
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor [role=tab],
+body.has-custom-cursor [role=button],
+body.has-custom-cursor .tab,
+body.has-custom-cursor .card,
+body.has-custom-cursor .btn,
+body.has-custom-cursor .cell,
+body.has-custom-cursor .brand,
+body.has-custom-cursor h1,
+body.has-custom-cursor h2{cursor:none!important}
+body.has-custom-cursor .voco-cursor-dot,
+body.has-custom-cursor .voco-cursor-ring{opacity:1}
+body.cur-hover .voco-cursor-ring{width:54px;height:54px;border-color:var(--gold);background:rgba(193,162,120,.16)}
+body.cur-hover .voco-cursor-dot{transform:translate(-50%,-50%) scale(1.3);background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.6), 0 0 12px #C1A278}
+body.cur-down .voco-cursor-ring{transform:translate(-50%,-50%) scale(.85);border-color:#fff}
+.lead{margin-top:16px;max-width:440px}
+.map{margin-top:48px;border-radius:32px;overflow:hidden;background:rgba(10,18,14,.6)}
+.tabs{display:flex;gap:8px;padding:12px;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:none}
+.tabs::-webkit-scrollbar,.rib::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:12px 20px;border-radius:99px;font-size:14px;font-weight:600;color:var(--sage);transition:.2s}
+.tab:hover{background:rgba(255,255,255,.1);color:#fff}
+.tab[aria-selected=true]{background:var(--gold);color:var(--bg)}
+.ban{position:relative;height:440px;transition:background .5s;animation:fade .5s ease both}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+.cap{position:absolute;left:24px;top:24px;padding:8px 16px;border-radius:99px;font-size:12px}
+.plan{position:absolute;right:24px;top:24px;width:224px}
+.info{position:absolute;left:32px;right:32px;bottom:28px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;pointer-events:none;background:none;border:none;padding:0}
+.info h3{color:#fff;font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 10px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.95)}
+.info p{margin-top:6px;max-width:540px;color:#f0f5f2;font-size:15px;line-height:1.55;text-shadow:0 2px 8px rgba(0,0,0,.9), 0 1px 3px rgba(0,0,0,.95)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;max-width:380px;list-style:none;padding:0}
+.chips li{border:1px solid rgba(193,162,120,.3);border-radius:99px;padding:8px 16px;font-size:14px;color:#fff}
+.menu-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.count{padding:8px 16px;border-radius:99px;font-size:14px;color:#fff}
+.rib{display:flex;flex-wrap:nowrap;gap:20px;overflow-x:auto;margin-top:48px;padding:0 16px 24px;scrollbar-width:none;scroll-snap-type:x proximity}
+.card{flex:0 0 calc((100% - 60px)/4);min-width:240px;scroll-snap-align:start;position:relative;height:340px;border-radius:32px;border:1px solid var(--line);overflow:hidden}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 5%,rgba(10,18,14,.55) 55%,rgba(10,18,14,.1))}
+.card .t{position:absolute;z-index:2;left:24px;right:24px;bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.price{color:var(--gold);font:700 15px Syne,sans-serif}
+.card h4{color:#fff;font-size:17px;font-weight:700;line-height:1.2;margin-top:4px}
+.card small{display:block;margin-top:4px;font-size:13px}
+.add{flex:none;padding:10px 16px;border-radius:99px;font-size:13px}
+.foot{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:32px;overflow:hidden}
+.foot>div{background:#142a21;padding:32px;line-height:1.7}
+.foot h3{color:#fff;font-size:20px;font-weight:700;margin-bottom:12px}
+.foot a.tel{color:var(--gold);font-size:18px;text-decoration:none;display:block}
+.book{display:flex;justify-content:space-between;margin-top:20px;padding:16px 20px;border-radius:16px;text-decoration:none}
+.copy{text-align:center;font-size:14px;opacity:.7;padding:40px 16px 56px}
+.rib-wrap{max-width:1152px;margin:0 auto}
+.arc{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px}
+.arc:before{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line)}
+.stop{position:relative;padding-top:36px}
+.stop:before{content:"";position:absolute;left:0;top:0;width:13px;height:13px;border-radius:50%;background:var(--gold)}
+.stop b{color:var(--gold);font:700 15px Syne,sans-serif}
+.stop h3{color:#fff;font-size:24px;font-weight:700;margin:8px 0}
+.stop p{max-width:300px;line-height:1.6}
+.band{border-radius:32px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;background:linear-gradient(120deg,rgba(34,67,56,.6),rgba(10,18,14,.6))}
+.band h2{max-width:560px}
+.band p{margin-top:16px;max-width:460px;line-height:1.7}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.fields label{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.fields input,.fields textarea{background:rgba(10,18,14,.6);border:1px solid var(--line);border-radius:16px;padding:14px 16px;color:#fff;font:inherit;text-align:left;width:100%}
+.fields select{background:rgba(10,18,14,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23C1A278' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;border:1px solid var(--line);border-radius:16px;padding:14px 44px 14px 16px;color:#fff;font:inherit;text-align:left;width:100%;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.fields select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.fields .wide{grid-column:1/-1}
+.fields textarea{min-height:110px;resize:vertical}
+.sent{margin-top:16px;color:var(--gold);min-height:22px}
+.hero>.sky{position:absolute;z-index:1;left:0;right:0;bottom:0;width:100%;height:48%}
+.hbtns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+.ghost{border:1px solid rgba(193,162,120,.45);color:#fff;text-decoration:none;background:rgba(10,18,14,.35);display:inline-block;border-radius:99px;padding:10px 20px;font-size:14px}
+.hbtns .ghost{padding:16px 32px}
+.scene{object-position:center 35%}
+.ban:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,14,.82) 0%,rgba(10,18,14,.25) 30%,transparent 60%);pointer-events:none}
+.cap,.info{z-index:2}
+.mh-r{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.wm{display:flex;flex-direction:column;align-items:center;line-height:1;padding-left:10px;letter-spacing:normal}
+.wm b{font:800 26px "Playfair Display",Georgia,serif;color:#fff}
+.wm i{font:500 7px Jost,system-ui,sans-serif;font-style:normal;color:var(--gold);letter-spacing:.62em;margin:4px -.62em 0 0}
+.flogo{display:block;width:96px;height:96px;margin-top:20px;border-radius:18px;border:1px solid var(--line)}
+.scene,.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+dialog{margin:auto;width:min(720px,92vw);max-height:86vh;padding:0;border:1px solid var(--line);border-radius:28px;background:#0f1c16;color:var(--sage);overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(5,9,7,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mhead{display:flex;justify-content:space-between;align-items:center;padding:24px 28px 8px}
+.mhead h3{color:#fff;font-size:28px;font-weight:700}
+.mx{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);color:#fff}
+.mtabs{display:flex;gap:8px;padding:12px 24px;overflow-x:auto}
+.mbody{overflow-y:auto;padding:4px 28px 12px;flex:1}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.mrow h4{color:#fff;font-size:17px;font-weight:700}
+.mrow small{display:block;margin-top:4px;font-size:13px}
+.mr{display:flex;align-items:center;gap:16px;flex:none}
+.mfoot{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;border-top:1px solid var(--line);color:#fff;gap:12px}
+@media(max-width:820px){
+.nav{display:none}
+.dock-in{flex-direction:column;border-radius:28px;align-items:stretch}
+.go{text-align:center}
+.hero{padding-bottom:300px}
+.plan{display:none}
+.ban{height:460px}
+.info{left:16px;right:16px;bottom:16px;flex-direction:column;align-items:flex-start;gap:16px;padding:20px}
+.info h3{font-size:28px}.chips{justify-content:flex-start}
+.foot{grid-template-columns:1fr}
+.arc{grid-template-columns:1fr;gap:32px}.arc:before{display:none}
+.fields{grid-template-columns:1fr}.band{padding:32px}
+.mrow{flex-direction:column;align-items:flex-start}
+
+}
+@media(prefers-reduced-motion:reduce){.rise,.ban{animation:none}html{scroll-behavior:auto}}
+#admfab{position:fixed;left:16px;bottom:16px;z-index:90;border-radius:99px;padding:10px 18px;font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.4)}
+#adm{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:100;background:#0d1913;border-left:1px solid var(--line);display:flex;flex-direction:column;color:var(--sage);font-size:14px}
+#adm[hidden]{display:none}
+#adm .ah{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;color:#fff;font:700 18px Syne,sans-serif}
+#adm .at{display:flex;gap:6px;padding:0 14px 10px;flex-wrap:wrap}
+#adm .at button{padding:7px 12px;border-radius:99px;border:1px solid var(--line);font-size:13px}
+#adm .at button.on{background:var(--gold);color:var(--bg)}
+#adm .ab2{flex:1;overflow:auto;padding:4px 18px 24px}
+#adm .af{display:flex;flex-direction:column;gap:4px;margin:0 0 10px;font-size:12px}
+#adm input,#adm textarea{background:#14271f;border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:#fff;font:inherit;font-size:14px;width:100%}
+#adm .box{border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px}
+#adm .row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+#adm .row input{flex:1;min-width:90px;width:auto}
+#adm .row button,#adm .ab{padding:6px 12px;border-radius:99px;border:1px solid var(--line);color:#fff;font-size:12px;cursor:pointer}
+#adm .ai img{width:100%;height:90px;object-fit:cover;border-radius:10px;margin-bottom:6px}
+#adm .pri{background:var(--gold);color:var(--bg);font-weight:700;border-radius:99px;padding:12px 20px;width:100%;margin:8px 0}
+#adm .note{font-size:12px;line-height:1.6;margin:8px 0}
+body.picking [data-e]:hover{outline:2px dashed var(--gold);cursor:crosshair}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in glass">
+    <a class="brand" href="#top" aria-label="VOCO Rooftop home"><span class="wm"><b>VOCO</b><i>ROOFTOP</i></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#top">The Skyline</a><a href="#map">Seating Map</a><a href="/menu">Menu</a><a href="#reserve">Location</a>
+    </nav>
+    <a class="cta gold" href="#reserve">Reserve Table</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="rooftopCanvas" class="hero-canvas"></canvas>
+    <svg class="sky" id="sky" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+    <span class="pill glass rise">GULBERG II, LAHORE • ROOFTOP LOUNGE</span>
+    <h1 class="rise r2">A SKYWARD<br>SANCTUARY</h1>
+    <p class="sub rise r3">Wood-fired gastronomy &amp; elevated mixology above Sir Syed Road.</p>
+    <div class="hbtns rise r3"><a class="go gold" href="/menu">View Menu</a><a class="ghost" href="#map">Explore the roof</a></div>
+
+    <div class="dock" id="book">
+      <div class="dock-in glass">
+        <div class="cell"><span>Guests</span>
+          <div class="ctr"><button id="minus" aria-label="Fewer guests">−</button><b id="guests" aria-live="polite">2</b><button id="plus" aria-label="More guests">+</button></div>
+        </div>
+        <label class="cell"><span>Time</span>
+          <select id="slot"><option>Sunset Hours 6:00 PM</option><option>Late Night 9:00 PM</option></select>
+        </label>
+        <button class="go gold" id="find">Find Your Table</button>
+      </div>
+      <p class="msg" id="msg" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <section id="map">
+    <h2>Interactive Rooftop Map</h2>
+    <p class="lead">Pick a zone to see where you will sit and what comes with it.</p>
+    <div class="map glass">
+      <div class="tabs" role="tablist" aria-label="Seating zones" id="tabs"></div>
+      <div class="ban" id="ban" role="tabpanel">
+        <img class="scene" id="zimg" alt=""><span class="cap gold" id="cap"></span>
+        
+        <div class="info"><div><h3 id="zname"></h3><p id="zblurb"></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="menu-head"><h2>Chef’s Selection</h2><div class="mh-r"><a class="ghost" href="/menu">View full menu</a></div></div>
+  </section>
+  <div class="rib-wrap"><div class="rib" id="rib"></div></div>
+
+  <section id="evening">
+    <h2>An Evening at VOCO</h2>
+    <p class="lead">How a night on the roof unfolds, from golden hour to last call.</p>
+    <div class="arc">
+      <div class="stop"><b>6:00 PM</b><h3>Golden hour</h3><p>Sunset cocktails on the Skyline Edge as the city lights come on below.</p></div>
+      <div class="stop"><b>8:30 PM</b><h3>Wood-fired dinner</h3><p>Ribeye, tandoori salmon and fresh pasta from the open fire, served on the terrace or in the glass pavilion.</p></div>
+      <div class="stop"><b>11:00 PM</b><h3>Late night</h3><p>Slower music, deeper sofas and mixology until 1:30 AM on weeknights and 2:00 AM on weekends.</p></div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="band glass">
+      <div><h2>Private dining &amp; celebrations</h2><p>Birthdays, engagements and corporate evenings. Book a cabana or the whole glass pavilion, and we will plan the menu with you.</p></div>
+      <a class="cta gold go" href="#reserve">Plan your event</a>
+    </div>
+  </section>
+
+  <section id="reserve">
+    <h2>Reserve Your Table</h2>
+    <p class="lead">Leave your details and we will confirm by phone.</p>
+    <form class="fields" id="rform">
+      <label>Full name<input name="name" required placeholder="Your name"></label>
+      <label>Phone<input name="phone" required type="tel" placeholder="+92 3XX XXXXXXX"></label>
+      <label>Date<input name="date" required type="date"></label>
+      <label>Time<select name="time"><option>Sunset Hours 6:00 PM</option><option>Late Night 9:00 PM</option></select></label>
+      <label class="wide">Seating preference<select name="seating"><option>Skyline Edge</option><option>Lounge Sofas</option><option>Covered Glass Pavilion</option></select></label>
+      <label class="wide">Pre-order Meal (Optional)
+        <div style="display:flex;gap:10px;align-items:center">
+          <input id="preorderInput" name="preorder" readonly placeholder="Pre-order meal: click to select dishes beforehand..." style="cursor:pointer;flex:1">
+          <button type="button" id="openPreorderBtn" class="go gold" style="padding:13px 20px;font-size:13px;border-radius:14px;white-space:nowrap">+ Browse Menu</button>
+        </div>
+      </label>
+      <label class="wide">Notes<textarea name="notes" placeholder="Occasion, dietary needs, guest count"></textarea></label>
+      <div class="wide"><button class="go gold" type="submit">Request table</button><p class="sent" id="sent" aria-live="polite"></p></div>
+    </form>
+  </section>
+
+  <section id="location" style="padding-top:64px">
+    
+    <div class="foot">
+      <div><h3>Address</h3><span data-f="address">28-K, Sir Syed Road, Block K,<br>Gulberg II, Lahore, Pakistan</span><svg class="flogo" viewBox="0 0 600 600" role="img" aria-label="VOCO Rooftop logo"><rect width="600" height="600" fill="#365243"/><path d="M170 183Q307 115 445 183" stroke="#B89C6E" stroke-width="2" fill="none"/><path d="M170 414Q307 482 445 414" stroke="#B89C6E" stroke-width="2" fill="none"/><text x="82" y="339" font-family="'Playfair Display',Georgia,serif" font-weight="800" font-size="150" fill="#fff" textLength="450" lengthAdjust="spacingAndGlyphs">VOCO</text><text x="136" y="376" font-family="Jost,system-ui,sans-serif" font-size="28" fill="#B89C6E" textLength="356" lengthAdjust="spacing">ROOFTOP</text></svg></div>
+      <div><h3>Operating Hours</h3><span data-f="hours">Mon–Thu 6:00 PM–1:30 AM<br>Fri–Sun 6:00 PM–2:00 AM</span></div>
+      <div><h3>Direct Line</h3><a class="tel" data-f="phone" href="tel:+923216660079">+92 321 666 0079</a></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="preorderDlg" aria-labelledby="pmTtl">
+  <div class="mhead">
+    <div>
+      <h3 id="pmTtl">Pre-order Meal for Your Table</h3>
+      <p style="font-size:13px;color:var(--sage);margin-top:4px">Select dishes to have freshly prepared upon your arrival.</p>
+    </div>
+    <button class="mx" id="preorderClose" type="button" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mtabs" id="pmTabs" role="tablist"></div>
+  <div class="mbody" id="pmBody"></div>
+  <div class="mfoot">
+    <div>
+      <span id="pmCount" style="color:#fff;font-weight:700">0 dishes selected</span>
+      <span id="pmTotal" style="color:var(--gold);font-family:Syne,sans-serif;margin-left:10px">PKR 0</span>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button type="button" class="ghost" id="pmClear" style="padding:10px 18px;border-radius:99px;font-size:13px">Clear</button>
+      <button type="button" class="cta gold" id="pmSave" style="padding:10px 22px;border-radius:99px">Confirm Pre-order</button>
+    </div>
+  </div>
+</dialog>
+
+<p class="copy">© 2026 VOCO Rooftop. Gulberg II, Lahore.</p>
+
+<script type="application/json" id="content">{{CONTENT}}</script>
+<script type="text/plain" id="tpl">{{TPL}}</script>
+<script>
+const tplRaw=document.getElementById('tpl').textContent;
+const C=JSON.parse(document.getElementById('content').textContent);
+C.t=C.t||{};C.th=C.th||{};C.info=C.info||{};
+const SKIP=new Set(['count','mcount','guests','msg','sent','cap','zname','zblurb','mclose','minus','plus','pmCount','pmTotal','cursorDot','cursorRing']);
+const LEAVES=[...document.body.querySelectorAll('h1,h2,h3,h4,p,span,a,button,small,li,b,i,div')].filter(e=>!(e.id&&SKIP.has(e.id))&&!e.dataset.f&&[...e.childNodes].every(n=>n.nodeType===3||n.nodeName==='BR')&&e.textContent.trim());
+LEAVES.forEach((e,i)=>{e.dataset.e=i;if(C.t[i]!=null)e.innerHTML=C.t[i]});
+const applyTheme=()=>{for(const k in C.th)document.documentElement.style.setProperty('--'+k,C.th[k])};
+const applyInfo=()=>document.querySelectorAll('[data-f]').forEach(e=>{const v=C.info[e.dataset.f];if(v){e.innerHTML=v;if(e.dataset.f==='phone')e.href='tel:'+v.replace(/[^+\d]/g,'')}});
+applyTheme();applyInfo();
+
+const zones=C.zones;
+function sky(W,base,maxH,seed,fill){let s="",x=0,r=seed;while(x<W){r=(r*9301+49297)%233280;const w=40+(r%60),h=Math.floor(maxH*.3+((r>>3)%Math.floor(maxH*.7)));s+=`<rect x="${x}" y="${base-h}" width="${w}" height="${h}" fill="${fill}"/>`;for(let k=0;k<Math.floor(h/26);k++){r=(r*9301+49297)%233280;if(r%3===0)s+=`<rect x="${x+8+(r%(w-16))}" y="${base-h+10+k*24}" width="5" height="7" fill="#C1A278" opacity=".${5+r%4}"/>`}x+=w+4}return s}
+const dishes=C.dishes;
+const $=id=>document.getElementById(id);
+
+// booking dock
+let g=2;
+$("minus").onclick=()=>{g=Math.max(1,g-1);$("guests").textContent=g};
+$("plus").onclick=()=>{g=Math.min(12,g+1);$("guests").textContent=g};
+$("find").onclick=()=>{$("msg").textContent=`Tables for ${g} at ${$("slot").value} are available. Confirm by phone: ${document.querySelector("[data-f=phone]").textContent}`};
+
+// zones
+function showZone(i){
+  const z=zones[i];
+  [...$("tabs").children].forEach((t,k)=>t.setAttribute("aria-selected",k===i));
+  const b=$("ban");b.style.animation="none";void b.offsetWidth;b.style.animation="";
+  b.style.background=`linear-gradient(to top,#0A120E 5%,transparent 70%),${z.bg}`;
+  $("zimg").src=z.img||"";$("zimg").alt=z.name;$("cap").textContent=z.cap;$("zname").textContent=z.name;$("zblurb").textContent=z.blurb;
+  
+
+}
+function buildTabs(a){$("tabs").innerHTML="";zones.forEach((z,i)=>{const t=document.createElement("button");t.className="tab";t.role="tab";t.textContent=z.tab;t.onclick=()=>showZone(i);$("tabs").appendChild(t)});if(zones.length)showZone(Math.min(a||0,zones.length-1))}
+buildTabs(0);
+
+// reservation form
+$("rform").onsubmit=async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector("button[type=submit]");
+  btn.disabled=true;
+  $("sent").textContent="Submitting request...";
+  try{
+    const res=await fetch("/api/reservations",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify({
+        name:form.elements["name"]?.value||"",
+        phone:form.elements["phone"]?.value||"",
+        date:form.elements["date"]?.value||"",
+        time:form.elements["time"]?.value||"",
+        seating:form.elements["seating"]?.value||"Skyline Edge",
+        preorder:form.elements["preorder"]?.value||"",
+        notes:form.elements["notes"]?.value||"",
+        guests:g||2
+      })
+    });
+    if(!res.ok)throw new Error("Failed");
+    $("sent").textContent="Request received! We will call you to confirm your table.";
+    form.reset();
+    Object.keys(preordered).forEach(k=>delete preordered[k]);
+    $("preorderInput").value="";
+  }catch(err){
+    $("sent").textContent="Request received. We will call you to confirm your table.";
+  }
+  btn.disabled=false;
+};
+
+// dishes
+function drawRib(){$("rib").innerHTML=dishes.map((d,i)=>`<article class="card" style="background:linear-gradient(160deg,${d[3]},#14241d)">${d[4]?`<img class="art" src="${d[4]}" alt="">`:""}<div class="t"><div><div class="price">PKR ${d[1].toLocaleString("en-US")}</div><h4>${d[0]}</h4><small>${d[2]}</small></div></div></article>`).join("")}
+drawRib();
+// hero skyline
+$("sky").innerHTML=sky(1200,300,230,7,"#0d1a14");
+
+// illustrated dish art
+document.querySelectorAll("[data-menu]").forEach(b=>b.onclick=()=>{location.href="/menu"});
+
+// preorder modal logic
+const preordered={};
+const openPreorder=()=>{drawPreorderMenu();$("preorderDlg").showModal()};
+$("preorderInput").onclick=openPreorder;
+$("openPreorderBtn").onclick=openPreorder;
+$("preorderClose").onclick=()=>$("preorderDlg").close();
+$("preorderDlg").onclick=e=>{if(e.target===$("preorderDlg"))$("preorderDlg").close()};
+
+let pcat=Object.keys(C.menu)[0]||'Starters';
+function drawPreorderMenu(){
+  $("pmTabs").innerHTML=Object.keys(C.menu).map(k=>`<button type="button" class="tab" role="tab" aria-selected="${k===pcat}" data-pk="${k}">${k}</button>`).join("");
+  $("pmBody").innerHTML=(C.menu[pcat]||[]).map(m=>{
+    const qty=preordered[m[0]]?.qty||0;
+    return `<div class="mrow"><div><h4>${m[0]}</h4><small>${m[1]}</small></div><div class="mr"><span class="price">PKR ${m[2].toLocaleString("en-US")}</span><div style="display:flex;align-items:center;gap:6px">${qty>0?`<button type="button" class="add" style="width:28px;height:28px;padding:0;border-radius:50%;border:1px solid var(--line);color:#fff" data-pact="dec" data-pn="${m[0]}">−</button><b style="color:#fff;min-width:16px;text-align:center">${qty}</b>`:''}<button type="button" class="add gold" data-pact="inc" data-pn="${m[0]}" data-pp="${m[2]}">${qty>0?'+ Add more':'+ Pre-order'}</button></div></div></div>`;
+  }).join("");
+  updatePreorderSummary();
+}
+function updatePreorderSummary(){
+  const items=Object.values(preordered);
+  let count=0,total=0;
+  items.forEach(i=>{count+=i.qty;total+=i.qty*i.price;});
+  $("pmCount").textContent=`${count} ${count===1?'dish':'dishes'} selected`;
+  $("pmTotal").textContent=`PKR ${total.toLocaleString('en-US')}`;
+}
+$("pmTabs").onclick=e=>{const b=e.target.closest("[data-pk]");if(b){pcat=b.dataset.pk;drawPreorderMenu()}};
+$("pmBody").onclick=e=>{
+  const b=e.target.closest("[data-pact]");if(!b)return;
+  const name=b.dataset.pn,act=b.dataset.pact;
+  if(act==='inc'){
+    const price=Number(b.dataset.pp)||0;
+    if(!preordered[name])preordered[name]={name,price,qty:1};
+    else preordered[name].qty+=1;
+  }else if(act==='dec'){
+    if(preordered[name]){preordered[name].qty-=1;if(preordered[name].qty<=0)delete preordered[name];}
+  }
+  drawPreorderMenu();
+};
+$("pmClear").onclick=()=>{
+  Object.keys(preordered).forEach(k=>delete preordered[k]);
+  $("preorderInput").value="";
+  drawPreorderMenu();
+  $("preorderDlg").close();
+};
+$("pmSave").onclick=()=>{
+  const items=Object.values(preordered);
+  $("preorderInput").value=items.length?items.map(i=>`${i.name} (x${i.qty})`).join(", "):"";
+  $("preorderDlg").close();
+};
+
+// luxury custom cursor
+(function(){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  if(!dot||!ring)return;
+
+  let mx=-100,my=-100,rx=-100,ry=-100;
+  let hasMoved=false;
+
+  function onMove(e){
+    mx=e.clientX;
+    my=e.clientY;
+    if(!hasMoved){
+      rx=mx;
+      ry=my;
+      hasMoved=true;
+      document.body.classList.add('has-custom-cursor');
+    }
+    dot.style.left=mx+'px';
+    dot.style.top=my+'px';
+  }
+
+  window.addEventListener('mousemove',onMove,{passive:true});
+
+  function renderCursor(){
+    if(hasMoved){
+      rx+=(mx-rx)*0.25;
+      ry+=(my-ry)*0.25;
+      ring.style.left=rx+'px';
+      ring.style.top=ry+'px';
+    }
+    requestAnimationFrame(renderCursor);
+  }
+  requestAnimationFrame(renderCursor);
+
+  document.addEventListener('mouseleave',()=>{
+    dot.style.opacity='0';
+    ring.style.opacity='0';
+  });
+  document.addEventListener('mouseenter',()=>{
+    if(hasMoved){
+      dot.style.opacity='1';
+      ring.style.opacity='1';
+    }
+  });
+
+  window.addEventListener('touchstart',()=>{
+    document.body.classList.remove('has-custom-cursor');
+    dot.style.opacity='0';
+    ring.style.opacity='0';
+    hasMoved=false;
+  },{passive:true});
+
+  const interactive='a, button, input, select, textarea, [role=tab], [role=button], .card, .tab, .cta, .brand, .badge, .dock-in, .cell, h1, h2';
+  document.addEventListener('mouseover',e=>{
+    if(e.target&&e.target.closest&&e.target.closest(interactive))document.body.classList.add('cur-hover');
+  });
+  document.addEventListener('mouseout',e=>{
+    if(e.target&&e.target.closest&&e.target.closest(interactive))document.body.classList.remove('cur-hover');
+  });
+  window.addEventListener('mousedown',()=>document.body.classList.add('cur-down'));
+  window.addEventListener('mouseup',()=>document.body.classList.remove('cur-down'));
+})();
+
+// rooftop night ember and starlight animation
+(function(){
+  const cvs=document.getElementById('rooftopCanvas');
+  if(!cvs)return;
+  const ctx=cvs.getContext('2d');
+  let W=cvs.width=cvs.offsetWidth;
+  let H=cvs.height=cvs.offsetHeight;
+  window.addEventListener('resize',()=>{
+    W=cvs.width=cvs.offsetWidth;
+    H=cvs.height=cvs.offsetHeight;
+  });
+
+  const count=52;
+  const particles=[];
+  for(let i=0;i<count;i++){
+    particles.push({
+      x:Math.random()*W,
+      y:Math.random()*H,
+      r:Math.random()*2+0.8,
+      dx:(Math.random()-0.5)*0.35,
+      dy:-(Math.random()*0.55+0.2),
+      alpha:Math.random()*0.7+0.2,
+      dAlpha:(Math.random()*0.015+0.005)*(Math.random()>0.5?1:-1),
+      gold:Math.random()>0.25
+    });
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(let p of particles){
+      p.x+=p.dx;
+      p.y+=p.dy;
+      p.alpha+=p.dAlpha;
+      if(p.alpha>0.85||p.alpha<0.15)p.dAlpha=-p.dAlpha;
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
+      if(p.x<-10)p.x=W+10;
+      if(p.x>W+10)p.x=-10;
+
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.gold?`rgba(193,162,120,${p.alpha})`:`rgba(235,220,195,${p.alpha*0.85})`;
+      ctx.shadowBlur=p.gold?8:4;
+      ctx.shadowColor='#C1A278';
+      ctx.fill();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+</script>
+<div class="voco-cursor-dot" id="cursorDot"></div>
+<div class="voco-cursor-ring" id="cursorRing"></div>
+</body>
+</html>

@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu & Home Delivery | VOCO Rooftop, Lahore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Syne:wght@600;700;800&family=Playfair+Display:wght@800&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A120E;
+  --forest:#224338;
+  --gold:#C1A278;
+  --sage:#9EB0AA;
+  --glass:rgba(34,67,56,.4);
+  --line:rgba(193,162,120,.2);
+  color-scheme:dark;
+  box-sizing:border-box;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+*,*:before,*:after{box-sizing:border-box;margin:0}
+body{
+  background:var(--bg);
+  color:var(--sage);
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+h1,h2,h3,h4,.d{font-family:Syne,"Plus Jakarta Sans",system-ui,sans-serif}
+button,select,input,textarea{font:inherit;color:inherit;border:0;background:none}
+a{text-decoration:none!important;color:inherit}
+a:hover,a:focus,a:visited,.cta,.gold,.ghost{text-decoration:none!important}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.glass{background:var(--glass);border:1px solid var(--line);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.gold{background:var(--gold);color:var(--bg);font-weight:700}
+.gold:hover{filter:brightness(1.1)}
+
+/* header navbar */
+.hdr{position:fixed;left:0;right:0;top:16px;z-index:50;padding:0 16px}
+.hdr-in{max-width:1152px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-radius:99px;padding:8px 12px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;letter-spacing:.2em;font-size:18px;text-decoration:none}
+.wm{display:flex;flex-direction:column;align-items:center;line-height:1;padding-left:10px}
+.wm b{font:800 26px "Playfair Display",Georgia,serif;color:#fff}
+.wm i{font:500 7px Jost,system-ui,sans-serif;font-style:normal;color:var(--gold);letter-spacing:.62em;margin:4px -.62em 0 0}
+.nav{display:flex;gap:4px}
+.nav a{padding:8px 16px;border-radius:99px;font-size:14px;color:var(--sage);text-decoration:none;transition:.2s}
+.nav a:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav a.active{background:rgba(255,255,255,.12);color:#fff}
+.cta{display:inline-block;padding:10px 20px;border-radius:99px;font-size:14px;text-decoration:none;cursor:pointer}
+
+/* Main hero for menu */
+.menu-hero{
+  padding:140px 20px 40px;
+  text-align:center;
+  max-width:1152px;
+  margin:0 auto;
+}
+.pill{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:.25em;
+  color:var(--gold);
+  padding:8px 24px;
+  border-radius:99px;
+  border:1px solid rgba(193,162,120,.35);
+  background:rgba(34,67,56,.25);
+  font-weight:700;
+  margin-bottom:20px;
+}
+h1{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  color:#fff;
+  font-weight:800;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  transition:color .35s ease;
+  display:inline-block;
+  cursor:default;
+}
+h1:hover{
+  color:var(--gold);
+}
+
+/* luxury custom cursor */
+.voco-cursor-dot{
+  position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);pointer-events:none!important;z-index:9999999;
+  transform:translate(-50%,-50%);box-shadow:0 0 0 1px rgba(0,0,0,.6), 0 0 10px rgba(193,162,120,.9);
+  opacity:0;transition:opacity .2s ease,transform .15s ease,background .2s ease;
+  will-change:left,top;
+}
+.voco-cursor-ring{
+  position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(193,162,120,.8);background:rgba(193,162,120,.05);
+  pointer-events:none!important;z-index:9999998;transform:translate(-50%,-50%);
+  opacity:0;transition:opacity .2s ease,width .22s cubic-bezier(.2,.8,.2,1),height .22s cubic-bezier(.2,.8,.2,1),border-color .2s ease,background .2s ease,transform .15s ease;
+  will-change:left,top;
+}
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor select,
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor [role=tab],
+body.has-custom-cursor [role=button],
+body.has-custom-cursor .tab,
+body.has-custom-cursor .card,
+body.has-custom-cursor .btn,
+body.has-custom-cursor .cell,
+body.has-custom-cursor .brand,
+body.has-custom-cursor h1,
+body.has-custom-cursor h2,
+body.has-custom-cursor h3,
+body.has-custom-cursor .cat-btn,
+body.has-custom-cursor .btn-add{cursor:none!important}
+body.has-custom-cursor .voco-cursor-dot,
+body.has-custom-cursor .voco-cursor-ring{opacity:1}
+body.cur-hover .voco-cursor-ring{width:54px;height:54px;border-color:var(--gold);background:rgba(193,162,120,.16)}
+body.cur-hover .voco-cursor-dot{transform:translate(-50%,-50%) scale(1.3);background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.6), 0 0 12px #C1A278}
+body.cur-down .voco-cursor-ring{transform:translate(-50%,-50%) scale(.85);border-color:#fff}
+.sub{
+  margin:18px auto 38px;
+  font-size:15px;
+  max-width:660px;
+  line-height:1.6;
+}
+
+/* Controls bar: categories and search */
+.controls-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:36px;
+  padding:0 4px;
+}
+.cats{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.cat-btn{
+  padding:10px 20px;
+  border-radius:99px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--sage);
+  background:transparent;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:.2s;
+}
+.cat-btn:hover{color:#fff}
+.cat-btn.active{
+  background:#1a3429;
+  border-color:rgba(193,162,120,.35);
+  color:#fff;
+}
+.search-box{
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-width:280px;
+}
+.search-box svg{
+  position:absolute;
+  left:16px;
+  width:16px;
+  height:16px;
+  color:var(--sage);
+  pointer-events:none;
+}
+.search-box input{
+  width:100%;
+  padding:10px 18px 10px 42px;
+  border-radius:99px;
+  background:rgba(10,18,14,.7);
+  border:1px solid rgba(193,162,120,.25);
+  color:#fff;
+  font-size:14px;
+}
+.search-box input:focus{
+  outline:none;
+  border-color:var(--gold);
+}
+
+/* Grid of dishes */
+.dishes-container{
+  max-width:1152px;
+  margin:0 auto 100px;
+  padding:0 20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.card{
+  background:#0d1a14;
+  border:1px solid rgba(193,162,120,.2);
+  border-radius:24px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform .2s, border-color .2s;
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(193,162,120,.45);
+}
+.media{
+  height:210px;
+  width:100%;
+  position:relative;
+  background:#11261d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.voco-brand{
+  color:#C1A278;
+  font-family:Syne,sans-serif;
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:.25em;
+  text-transform:lowercase;
+  opacity:.9;
+  user-select:none;
+}
+.body{
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.cat-tag{
+  font-size:11px;
+  letter-spacing:.18em;
+  color:var(--sage);
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.dish-ttl{
+  font-size:19px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:6px;
+  line-height:1.2;
+}
+.dish-desc{
+  font-size:13px;
+  color:var(--sage);
+  line-height:1.5;
+  margin-bottom:20px;
+  flex:1;
+}
+.foot-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:auto;
+}
+.price{
+  color:var(--gold);
+  font:700 17px Syne,sans-serif;
+}
+.btn-add{
+  padding:9px 18px;
+  border-radius:99px;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  background:rgba(10,18,14,.8);
+  border:1px solid rgba(193,162,120,.4);
+  cursor:pointer;
+  transition:.2s;
+  white-space:nowrap;
+}
+.btn-add:hover{
+  background:var(--gold);
+  color:var(--bg);
+}
+.btn-add.in-cart{
+  background:#224338;
+  border-color:var(--gold);
+  color:#fff;
+}
+
+/* Floating Cart Bar */
+.cart-bar{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(120px);
+  z-index:60;
+  max-width:680px;
+  width:calc(100% - 32px);
+  padding:12px 20px;
+  border-radius:99px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  box-shadow:0 12px 36px rgba(0,0,0,.6);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.cart-bar.show{
+  transform:translateX(-50%) translateY(0);
+}
+.cart-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#fff;
+  font-size:14px;
+}
+.cart-info b{color:var(--gold);font-family:Syne,sans-serif}
+.cart-btn{
+  padding:12px 24px;
+  border-radius:99px;
+  font-size:14px;
+}
+
+/* Order / Checkout Modal */
+dialog#orderModal{
+  margin:auto;
+  width:min(580px,94vw);
+  max-height:90vh;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#0d1a14;
+  color:var(--sage);
+  overflow:hidden;
+}
+dialog#orderModal[open]{
+  display:flex;
+  flex-direction:column;
+}
+dialog::backdrop{
+  background:rgba(5,9,7,.85);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+.mhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 24px;
+  border-bottom:1px solid var(--line);
+}
+.mhead h3{color:#fff;font-size:22px;font-weight:700}
+.mx{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  color:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+}
+.mbody{
+  padding:20px 24px;
+  overflow-y:auto;
+  flex:1;
+}
+.cart-items{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:20px;
+  max-height:220px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+.cart-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(193,162,120,.12);
+}
+.ci-name{color:#fff;font-weight:600;font-size:14px}
+.ci-price{color:var(--gold);font-family:Syne,sans-serif;font-size:14px}
+.ci-ctr{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.ci-ctr button{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:1px solid rgba(193,162,120,.35);
+  color:#fff;
+  cursor:pointer;
+}
+.ci-ctr button:hover{background:var(--gold);color:var(--bg)}
+.ci-ctr span{width:20px;text-align:center;font-weight:700;color:#fff}
+.cart-sum{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0 16px;
+  border-top:1px solid var(--line);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+}
+.del-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:12px;
+}
+.del-fields label{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:13px;
+  font-weight:600;
+}
+.del-fields .wide{grid-column:1/-1}
+.del-fields input,.del-fields textarea{
+  background:rgba(10,18,14,.7);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px 14px;
+  color:#fff;
+  width:100%;
+}
+.del-fields input:focus,.del-fields textarea:focus{
+  outline:none;
+  border-color:var(--gold);
+}
+.mfoot{
+  padding:16px 24px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.del-submit{
+  width:100%;
+  padding:14px;
+  border-radius:99px;
+  font-size:15px;
+}
+.del-msg{
+  text-align:center;
+  font-size:13px;
+  color:var(--gold);
+  min-height:18px;
+}
+.success-box{
+  text-align:center;
+  padding:32px 16px;
+}
+.success-box h4{color:#fff;font-size:24px;margin-bottom:12px}
+.success-box p{line-height:1.6;margin-bottom:20px}
+
+/* Footer */
+footer{max-width:1152px;margin:0 auto;padding:0 16px 56px}
+.foot{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:32px;overflow:hidden}
+.foot>div{background:#142a21;padding:32px;line-height:1.7}
+.foot h3{color:#fff;font-size:20px;font-weight:700;margin-bottom:12px}
+.foot a.tel{color:var(--gold);font-size:18px;text-decoration:none;display:block}
+.copy{text-align:center;font-size:14px;opacity:.7;padding:40px 16px 20px}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .nav{display:none}
+  .del-fields{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .grid{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .controls-bar{flex-direction:column;align-items:stretch}
+  .search-box{min-width:auto;width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in glass">
+    <a class="brand" href="/" aria-label="VOCO Rooftop home"><span class="wm"><b>VOCO</b><i>ROOFTOP</i></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#top">The Skyline</a>
+      <a href="/#map">Seating Map</a>
+      <a href="/menu" class="active">Menu</a>
+      <a href="/#reserve">Location</a>
+    </nav>
+    <a class="cta gold" href="/#reserve">Reserve Table</a>
+  </div>
+</header>
+
+<main>
+  <section class="menu-hero" style="position:relative;overflow:hidden">
+    <canvas id="menuAmbienceCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1"></canvas>
+    <div style="position:relative;z-index:2">
+    <span class="pill">LAHORE HOME DELIVERY • EXPRESS SERVICE</span>
+    <h1>VOCO at Your Doorstep</h1>
+    <p class="sub">Wood-fired steaks, artisan pastas, clay-oven seafood &amp; handcrafted mocktails prepared by our chefs and delivered fresh to your residence.</p>
+
+
+    <div class="controls-bar">
+      <div class="cats" id="catsBar">
+        <button class="cat-btn active" data-cat="all">All</button>
+      </div>
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search dishes, drinks..." autocomplete="off">
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="dishes-container">
+    <div class="grid" id="dishesGrid"></div>
+  </section>
+</main>
+
+<div class="cart-bar glass" id="cartBar">
+  <div class="cart-info">
+    <span>🛒 <b id="cartCount">0 items</b></span>
+    <span>·</span>
+    <span>Total: <b id="cartTotal">PKR 0</b></span>
+  </div>
+  <button class="cta gold cart-btn" id="openCartBtn">View Order &amp; Delivery →</button>
+</div>
+
+<dialog id="orderModal" aria-labelledby="modalTtl">
+  <div class="mhead">
+    <h3 id="modalTtl">VOCO Home Delivery</h3>
+    <button class="mx" id="closeModalBtn" aria-label="Close">✕</button>
+  </div>
+  <div class="mbody" id="modalBody">
+    <div class="cart-items" id="cartItemsList"></div>
+    <div class="cart-sum">
+      <span>Total Amount:</span>
+      <span id="modalTotal" style="color:var(--gold);font-family:Syne,sans-serif">PKR 0</span>
+    </div>
+    <form id="deliveryForm" class="del-fields">
+      <label>Full name *<input required name="name" placeholder="Your name"></label>
+      <label>Phone number *<input required type="tel" name="phone" placeholder="+92 3XX XXXXXXX"></label>
+      <label class="wide">Delivery Address (Lahore) *<input required name="address" placeholder="House/Flat #, Street, Block, Area (e.g. Gulberg, DHA, Cantt)"></label>
+      <label class="wide">Special instructions<textarea name="notes" rows="2" placeholder="Dietary instructions, delivery notes, gate code"></textarea></label>
+    </form>
+  </div>
+  <div class="mfoot" id="modalFoot">
+    <button class="cta gold del-submit" id="submitOrderBtn">Place Delivery Order</button>
+    <p class="del-msg" id="orderMsg" aria-live="polite"></p>
+  </div>
+</dialog>
+
+<footer>
+  <div class="foot">
+    <div><h3>Address</h3><span>28-K, Sir Syed Road, Block K,<br>Gulberg II, Lahore, Pakistan</span></div>
+    <div><h3>Operating Hours</h3><span>Mon–Thu 6:00 PM–1:30 AM<br>Fri–Sun 6:00 PM–2:00 AM</span></div>
+    <div><h3>Direct Line</h3><a class="tel" href="tel:+923216660079">+92 321 666 0079</a></div>
+  </div>
+  <p class="copy">© 2026 VOCO Rooftop. Gulberg II, Lahore.</p>
+</footer>
+
+<script type="application/json" id="content">{{CONTENT}}</script>
+<script>
+(()=>{
+const C = JSON.parse(document.getElementById('content').textContent || '{}');
+const menu = C.menu || {};
+const dishes = C.dishes || [];
+
+// Map photos from dishes to menu items by name
+const photoMap = {};
+dishes.forEach(d => {
+  if (d && d[0] && d[4]) photoMap[d[0].toLowerCase()] = d[4];
+});
+
+// Build flat list of all dishes
+let allItems = [];
+Object.entries(menu).forEach(([cat, list]) => {
+  list.forEach(m => {
+    allItems.push({
+      category: cat,
+      name: m[0],
+      desc: m[1],
+      price: m[2],
+      img: photoMap[m[0].toLowerCase()] || ''
+    });
+  });
+});
+
+// Category pills
+const catsBar = document.getElementById('catsBar');
+const cats = Object.keys(menu);
+cats.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'cat-btn';
+  btn.dataset.cat = c;
+  btn.textContent = c;
+  catsBar.appendChild(btn);
+});
+
+let currentCat = 'all';
+let searchQuery = '';
+
+function renderDishes() {
+  const grid = document.getElementById('dishesGrid');
+  const filtered = allItems.filter(item => {
+    const matchesCat = currentCat === 'all' || item.category === currentCat;
+    const matchesSearch = !searchQuery ||
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCat && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:var(--sage)">No dishes found matching your selection.</p>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => {
+    const qty = cart[item.name]?.qty || 0;
+    const btnLabel = qty > 0 ? `Added (${qty}) +` : '+ Add to Order';
+    const btnClass = qty > 0 ? 'btn-add in-cart' : 'btn-add';
+    const mediaHtml = item.img ?
+      `<img src="${item.img}" alt="${item.name}">` :
+      `<div class="voco-brand">voco</div>`;
+
+    return `
+      <article class="card">
+        <div class="media">
+          ${mediaHtml}
+        </div>
+        <div class="body">
+          <span class="cat-tag">${item.category}</span>
+          <h3 class="dish-ttl">${item.name}</h3>
+          <p class="dish-desc">${item.desc}</p>
+          <div class="foot-row">
+            <div class="price">PKR ${item.price.toLocaleString('en-US')}</div>
+            <button class="${btnClass}" data-name="${encodeURIComponent(item.name)}">${btnLabel}</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// Category filter click
+catsBar.addEventListener('click', e => {
+  const btn = e.target.closest('.cat-btn');
+  if (!btn) return;
+  catsBar.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  renderDishes();
+});
+
+// Search input
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchQuery = e.target.value.trim();
+  renderDishes();
+});
+
+// Cart state
+const cart = {};
+
+function updateCartUI() {
+  let count = 0;
+  let total = 0;
+  Object.values(cart).forEach(ci => {
+    count += ci.qty;
+    total += ci.qty * ci.price;
+  });
+
+  const cartBar = document.getElementById('cartBar');
+  if (count > 0) {
+    cartBar.classList.add('show');
+    document.getElementById('cartCount').textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
+    document.getElementById('cartTotal').textContent = `PKR ${total.toLocaleString('en-US')}`;
+  } else {
+    cartBar.classList.remove('show');
+  }
+
+  // Also update modal summary if open
+  document.getElementById('modalTotal').textContent = `PKR ${total.toLocaleString('en-US')}`;
+  renderCartList();
+}
+
+function renderCartList() {
+  const list = document.getElementById('cartItemsList');
+  const entries = Object.values(cart);
+  if (entries.length === 0) {
+    list.innerHTML = '<p style="text-align:center;padding:20px;color:var(--sage)">Your order is empty.</p>';
+    return;
+  }
+  list.innerHTML = entries.map(item => `
+    <div class="cart-row">
+      <div>
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-price">PKR ${(item.price * item.qty).toLocaleString('en-US')}</div>
+      </div>
+      <div class="ci-ctr">
+        <button data-act="dec" data-name="${encodeURIComponent(item.name)}">−</button>
+        <span>${item.qty}</span>
+        <button data-act="inc" data-name="${encodeURIComponent(item.name)}">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Add to cart click on grid
+document.getElementById('dishesGrid').addEventListener('click', e => {
+  const btn = e.target.closest('.btn-add');
+  if (!btn) return;
+  const name = decodeURIComponent(btn.dataset.name);
+  const found = allItems.find(i => i.name === name);
+  if (!found) return;
+
+  if (!cart[name]) {
+    cart[name] = { name: found.name, price: found.price, qty: 1 };
+  } else {
+    cart[name].qty += 1;
+  }
+  updateCartUI();
+  renderDishes();
+});
+
+// Cart controls inside modal
+document.getElementById('cartItemsList').addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]');
+  if (!b) return;
+  const name = decodeURIComponent(b.dataset.name);
+  if (!cart[name]) return;
+
+  if (b.dataset.act === 'inc') {
+    cart[name].qty += 1;
+  } else if (b.dataset.act === 'dec') {
+    cart[name].qty -= 1;
+    if (cart[name].qty <= 0) delete cart[name];
+  }
+  updateCartUI();
+  renderDishes();
+});
+
+// Modal open/close
+const modal = document.getElementById('orderModal');
+document.getElementById('openCartBtn').onclick = () => {
+  updateCartUI();
+  modal.showModal();
+};
+document.getElementById('closeModalBtn').onclick = () => modal.close();
+modal.addEventListener('click', e => {
+  if (e.target === modal) modal.close();
+});
+
+// Submit delivery order
+document.getElementById('submitOrderBtn').onclick = async () => {
+  const form = document.getElementById('deliveryForm');
+  const msg = document.getElementById('orderMsg');
+  const btn = document.getElementById('submitOrderBtn');
+
+  const items = Object.values(cart);
+  if (items.length === 0) {
+    msg.textContent = 'Please add dishes to your order first.';
+    return;
+  }
+
+  const name = form.elements['name'].value.trim();
+  const phone = form.elements['phone'].value.trim();
+  const address = form.elements['address'].value.trim();
+  const notes = form.elements['notes'].value.trim();
+
+  if (!name || !phone || !address) {
+    msg.textContent = 'Please fill in your name, phone number, and delivery address.';
+    return;
+  }
+
+  let total = 0;
+  items.forEach(i => total += i.qty * i.price);
+
+  btn.disabled = true;
+  msg.textContent = 'Sending your order...';
+
+  try {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        customerName: name,
+        phone,
+        address,
+        notes,
+        items,
+        total
+      })
+    });
+
+    if (!res.ok) throw new Error('Order submission failed');
+    const data = await res.json();
+
+    // Show success view
+    document.getElementById('modalBody').innerHTML = `
+      <div class="success-box">
+        <h4>Order Received!</h4>
+        <p style="color:#fff;font-weight:700">Order ID: ${data.order?.id || 'ORD-VOCO'}</p>
+        <p>Thank you, ${name}. Our chefs are preparing your wood-fired dishes. Estimated delivery time: <b>35–45 minutes</b> to ${address}.</p>
+        <p style="color:var(--gold)">Our concierge will call you at ${phone} to confirm dispatch.</p>
+        <a class="cta gold" style="display:inline-block;margin-top:12px" href="/menu">Back to Menu</a>
+      </div>
+    `;
+    document.getElementById('modalFoot').style.display = 'none';
+
+    // Clear cart
+    Object.keys(cart).forEach(k => delete cart[k]);
+    updateCartUI();
+    renderDishes();
+  } catch (err) {
+    msg.textContent = 'Could not place order online. Please call us at +92 321 666 0079.';
+    btn.disabled = false;
+  }
+};
+
+renderDishes();
+updateCartUI();
+
+// luxury custom cursor
+(function(){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  if(!dot||!ring)return;
+
+  let mx=-100,my=-100,rx=-100,ry=-100;
+  let hasMoved=false;
+
+  function onMove(e){
+    mx=e.clientX;
+    my=e.clientY;
+    if(!hasMoved){
+      rx=mx;
+      ry=my;
+      hasMoved=true;
+      document.body.classList.add('has-custom-cursor');
+    }
+    dot.style.left=mx+'px';
+    dot.style.top=my+'px';
+  }
+
+  window.addEventListener('mousemove',onMove,{passive:true});
+
+  function renderCursor(){
+    if(hasMoved){
+      rx+=(mx-rx)*0.25;
+      ry+=(my-ry)*0.25;
+      ring.style.left=rx+'px';
+      ring.style.top=ry+'px';
+    }
+    requestAnimationFrame(renderCursor);
+  }
+  requestAnimationFrame(renderCursor);
+
+  document.addEventListener('mouseleave',()=>{
+    dot.style.opacity='0';
+    ring.style.opacity='0';
+  });
+  document.addEventListener('mouseenter',()=>{
+    if(hasMoved){
+      dot.style.opacity='1';
+      ring.style.opacity='1';
+    }
+  });
+
+  window.addEventListener('touchstart',()=>{
+    document.body.classList.remove('has-custom-cursor');
+    dot.style.opacity='0';
+    ring.style.opacity='0';
+    hasMoved=false;
+  },{passive:true});
+
+  const interactive='a, button, input, select, textarea, [role=tab], [role=button], .card, .tab, .cta, .brand, .badge, .cat-btn, .btn-add, h1, h2, h3';
+  document.addEventListener('mouseover',e=>{
+    if(e.target&&e.target.closest&&e.target.closest(interactive))document.body.classList.add('cur-hover');
+  });
+  document.addEventListener('mouseout',e=>{
+    if(e.target&&e.target.closest&&e.target.closest(interactive))document.body.classList.remove('cur-hover');
+  });
+  window.addEventListener('mousedown',()=>document.body.classList.add('cur-down'));
+  window.addEventListener('mouseup',()=>document.body.classList.remove('cur-down'));
+})();
+
+// rooftop night ember and starlight animation
+(function(){
+  const cvs=document.getElementById('menuAmbienceCanvas');
+  if(!cvs)return;
+  const ctx=cvs.getContext('2d');
+  let W=cvs.width=cvs.offsetWidth;
+  let H=cvs.height=cvs.offsetHeight;
+  window.addEventListener('resize',()=>{
+    W=cvs.width=cvs.offsetWidth;
+    H=cvs.height=cvs.offsetHeight;
+  });
+
+  const count=42;
+  const particles=[];
+  for(let i=0;i<count;i++){
+    particles.push({
+      x:Math.random()*W,
+      y:Math.random()*H,
+      r:Math.random()*2+0.8,
+      dx:(Math.random()-0.5)*0.3,
+      dy:-(Math.random()*0.5+0.2),
+      alpha:Math.random()*0.7+0.2,
+      dAlpha:(Math.random()*0.015+0.005)*(Math.random()>0.5?1:-1),
+      gold:Math.random()>0.25
+    });
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(let p of particles){
+      p.x+=p.dx;
+      p.y+=p.dy;
+      p.alpha+=p.dAlpha;
+      if(p.alpha>0.85||p.alpha<0.15)p.dAlpha=-p.dAlpha;
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
+      if(p.x<-10)p.x=W+10;
+      if(p.x>W+10)p.x=-10;
+
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.gold?`rgba(193,162,120,${p.alpha})`:`rgba(235,220,195,${p.alpha*0.85})`;
+      ctx.shadowBlur=p.gold?8:4;
+      ctx.shadowColor='#C1A278';
+      ctx.fill();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+})();
+</script>
+<div class="voco-cursor-dot" id="cursorDot"></div>
+<div class="voco-cursor-ring" id="cursorRing"></div>
+</body>
+</html>
