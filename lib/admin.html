@@ -39,7 +39,20 @@ input[type=color]{height:42px;padding:3px}
 .pri{background:var(--g);color:#fff;font-weight:700;border-radius:99px;padding:12px 20px;width:100%}
 .note{font-size:13px;line-height:1.6;margin:0 0 14px;color:#778}
 iframe{position:fixed;left:-9999px;top:0;width:1280px;height:900px;border:0;visibility:hidden}
-@media(max-width:800px){.shell{flex-direction:column;height:auto}#side{width:auto;padding:10px}#nav{flex-direction:row;flex-wrap:wrap}.top{flex-wrap:wrap;height:auto;padding:12px}}
+@media(max-width:800px){
+  .shell{flex-direction:column;height:auto}
+  #side{width:auto;padding:10px 14px;border-right:none;border-bottom:1px solid var(--line)}
+  #nav{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none}
+  #nav::-webkit-scrollbar{display:none}
+  #nav button{white-space:nowrap;font-size:13px;padding:9px 14px;border-radius:10px}
+  .top{flex-wrap:wrap;height:auto;padding:12px 14px;gap:8px}
+  .top .btn{font-size:12px;padding:7px 12px}
+  main{padding:18px 14px 40px}
+  #pane.grid{grid-template-columns:1fr;gap:14px}
+  input,textarea{font-size:16px}
+  .row{flex-wrap:wrap;gap:6px}
+  .row input{width:100%;min-width:auto}
+}
 </style></head><body>
 <header class="top"><div class="wm"><b>VOCO</b><i>ROOFTOP</i></div><span class="tag">Admin Panel</span><div class="sp"></div><span id="dirty"></span>
 <a class="btn" href="/" target="_blank" rel="noopener">View website ↗</a><a class="btn" href="/menu" target="_blank" rel="noopener" style="margin-left:6px">View menu ↗</a><button id="save" class="btn dark">Save changes</button><button id="out" class="btn">Sign out</button></header>
